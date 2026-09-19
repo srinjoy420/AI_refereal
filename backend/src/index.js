@@ -4,6 +4,9 @@ import cookieParser from "cookie-parser"
 
 import { prisma } from "./lib/db.js";
 import authRouter from "./routes/auth.routes.js";
+import resumeRouter from "./routes/resume.routes.js";
+
+
 
 
 dotenv.config()
@@ -16,6 +19,7 @@ app.get("/",(req,res)=>{
     res.send("Hello World")
 })
 app.use("/api/v1/auth",authRouter)
+app.use("/api/v1/resume",resumeRouter)
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)

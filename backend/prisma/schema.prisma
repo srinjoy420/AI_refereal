@@ -24,7 +24,44 @@ model User{
   password String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  resumes   Resume[]
+   messages  GeneratedMessage[]
   
 }
+model Resume{
+   id String @id @default(cuid())
+   userId String
+   fileUrl String
+   fileName String
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt
 
+   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+}
+
+model GeneratedMessage {
+  id        String   @id @default(uuid())
+  userId    String
+
+  profileName    String?
+  profileRole    String?
+  profileCompany String?
+
+  profileText    String
+  jobDescription String?
+
+  messageType    MessageType
+  generatedText  String
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum MessageType {
+  REFERRAL
+  HR_OUTREACH
+  EMAIL
+  FOLLOW_UP
+}

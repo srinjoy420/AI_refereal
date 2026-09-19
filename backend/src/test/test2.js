@@ -1,0 +1,10 @@
+// import dotenv from "dotenv";
+// import { dirname, resolve } from "node:path";
+// import { fileURLToPath } from "node:url";
+// import crypto from "node:crypto";
+// import fs from "node:fs";
+// import axios from "axios";
+// import FormData from "form-data";
+// dotenv.config({ path: resolve(dirname(fileURLToPath(import.meta.url)), "../../.env") });
+// console.log("api_key:", JSON.stringify(process.env.CLOUDINARY_API_KEY));
+// console.log("api_secret:", JSON.stringify(process.env.CLOUDINARY_API_SECRET));

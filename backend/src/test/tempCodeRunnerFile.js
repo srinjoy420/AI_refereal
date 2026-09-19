@@ -1,0 +1,1 @@
+dotenv.config({ path: resolve(dirname(fileURLToPath(import.meta.url)), "../../.env") });
