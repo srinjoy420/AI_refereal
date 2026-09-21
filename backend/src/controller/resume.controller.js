@@ -23,7 +23,7 @@ const uploadCloudenary=(fileBuffer,folder='resumes')=>{
 
 export const uploadResume=async(req,res)=>{
     try {
-        const userId=req.user.userId
+        const userId=req.user.id
         if(!req.file){
            return res.status(400).json({ message: "No file uploaded" });
 
@@ -43,6 +43,16 @@ export const uploadResume=async(req,res)=>{
     console.error("ERROR MESSAGE:", error.message);
     console.error("ERROR STACK:", error.stack);
     res.status(500).json({ message: "Failed to upload resume" });
+        
+    }
+}
+export const getResume=async(req,res)=>{
+    try {
+        const userId=req.user.id
+        if(!userId){
+            return res.status(400).json({message:""})
+        }
+    } catch (error) {
         
     }
 }
