@@ -24,7 +24,7 @@ export const register = async (req, res) => {
                 password: hasedPassword
             }
         })
-        const token = jwt.sign({ id: newUser },
+        const token = jwt.sign({ id: newUser.id },
             process.env.TOKEN_SECRET,
             { expiresIn: process.env.TOKEN_EXPIRY }
         );

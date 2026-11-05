@@ -3,7 +3,7 @@ import { prisma } from "../lib/db.js"
 import dotenv from "dotenv"
 dotenv.config()
 
-export const isLOggedIn=async(req,resizeBy,next)=>{
+export const isLOggedIn=async(req,res,next)=>{
     try {
         const token=req.cookies.jwt
         if(!token){

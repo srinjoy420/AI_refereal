@@ -49,11 +49,12 @@ export const useAuthstore = create((set) => ({
                 error: null
             })
             toast.success("user created succesfully")
+            return { success: true }
         } catch (error) {
             const errorMessage = error.response?.data?.message || error.response?.data?.error || "Signup failed";
             set({ error: errorMessage });
             toast.error(errorMessage)
-
+            return { success: false }
         }
         finally{
             set({isSigningUp:false})
