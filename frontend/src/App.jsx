@@ -4,6 +4,7 @@ import { Routes, Navigate, Route } from "react-router-dom"
 import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import SingupPage from './pages/SingupPage'
+import ProfilePage from './pages/ProfilePage.jsx'
 
 import PageLoader from './components/PageLoader.jsx'
 import { useAuthstore } from './store/useauthstore.js'
@@ -18,25 +19,18 @@ const App = () => {
     checkAuth()
   }, [checkAuth])
 
-  console.log("authUser", authUser)
-
   if (isCheckingAuth) return <PageLoader />
 
 
   return (
-    <div>
-      <div className='min-h-screen bg-slate-900 relative flex items-center justify-center p-4 overflow-hidden text-white'>
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
-        <div className="absolute top-0 -left-4 size-96 bg-pink-500 opacity-20 blur-[100px] -z-10" />
-        <div className="absolute bottom-0 -right-4 size-96 bg-cyan-500 opacity-20 blur-[100px] -z-10" />
-        <Routes>
-          <Route path='/'  element={authUser ? <HomePage /> : <Navigate to={"/login"}/>}/>
-          <Route path='/login' element={!authUser ? <LoginPage /> :<Navigate to={"/"}/>}/>
-          <Route path='/singup' element={<SingupPage />} />
-        </Routes>
-      </div>
+    <div className="min-h-screen">
+      <Routes>
+        <Route path='/' element={authUser ? <HomePage /> : <Navigate to={"/login"}/>}/>
+        <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to={"/login"}/>}/>
+        <Route path='/login' element={!authUser ? <LoginPage /> :<Navigate to={"/"}/>}/>
+        <Route path='/singup' element={<SingupPage />} />
+      </Routes>
       <Toaster />
-
     </div>
   )
 }
